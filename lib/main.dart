@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:standered_application/src/application/di/app_initilaizer.dart';
 
-void main() {
+void main() async {
+  await AppInitilaizer.init();
   runApp(const MyApp());
 }
 
