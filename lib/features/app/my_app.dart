@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:standered_application/generated/codegen_loader.g.dart';
+import 'package:standered_application/src/application/routes/app_router.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -41,7 +42,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             builder: BotToastInit(),
             localizationsDelegates: context.localizationDelegates,
             locale: EasyLocalization.of(context)!.locale,
-            // routerConfig: AppRouter.getRouter,
+            routerConfig: AppRouter.getRouter,
             // theme: AppThemes.currentTheme,
             // darkTheme: AppThemes.darkTheme,
             title: 'Flutter Demo',
