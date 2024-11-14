@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:standered_application/generated/codegen_loader.g.dart';
 import 'package:standered_application/src/application/router/app_router.dart';
+import 'package:standered_application/src/resourses/theme/theme_manager.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -43,8 +44,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             localizationsDelegates: context.localizationDelegates,
             locale: EasyLocalization.of(context)!.locale,
             routerConfig: AppRouter().goRouter,
-            // theme: AppThemes.currentTheme,
-            // darkTheme: AppThemes.darkTheme,
+            theme: AppThemes.currentTheme,
+            darkTheme: AppThemes.darkTheme,
             title: 'Flutter Demo',
             themeMode: ThemeMode.light,
           );

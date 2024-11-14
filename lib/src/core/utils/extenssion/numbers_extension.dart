@@ -19,15 +19,15 @@ extension IntFormatting on int {
   }
 
   /// Add currency
-  // String get withCurrency {
-  //   if (AppLanguages.isArabic) {
-  //     final formatter = NumberFormat.decimalPattern('ar');
-  //     return '${formatter.format(this)} ل.س';
-  //   } else {
-  //     final formatter = NumberFormat.decimalPattern('en');
-  //     return '${formatter.format(this)} SYP';
-  //   }
-  // }
+  String get withCurrency {
+    if (AppLanguages.isArabic) {
+      final formatter = NumberFormat.decimalPattern('ar');
+      return '${formatter.format(this)} ل.س';
+    } else {
+      final formatter = NumberFormat.decimalPattern('en');
+      return '${formatter.format(this)} SYP';
+    }
+  }
 }
 
 extension DoubleToValues on double {
@@ -35,30 +35,29 @@ extension DoubleToValues on double {
   Radius get toRadius {
     return Radius.circular(this);
   }
+
+
+  String get withDistance {
+    if (AppLanguages.isArabic) {
+      return '$this كم';
+    } else {
+      return '$this km';
+    }
+  }
 }
 
-//   String get withDistance {
-//     if (AppLanguages.isArabic) {
-//       return '$this كم';
-//     } else {
-//       return '$this km';
-//     }
-//   }
-// }
-
 extension DoubleFormatting on double {
-  /// Add currency
 
   /// Add currency
-  // String get withCurrency {
-  //   if (AppLanguages.isArabic) {
-  //     final formatter = NumberFormat.decimalPattern('ar');
-  //     return '${formatter.format(this)} ل.س';
-  //   } else {
-  //     final formatter = NumberFormat.decimalPattern('en');
-  //     return '${formatter.format(this)} SYP';
-  //   }
-  // }
+  String get withCurrency {
+    if (AppLanguages.isArabic) {
+      final formatter = NumberFormat.decimalPattern('ar');
+      return '${formatter.format(this)} ل.س';
+    } else {
+      final formatter = NumberFormat.decimalPattern('en');
+      return '${formatter.format(this)} SYP';
+    }
+  }
 
   String toCommaSeparated({String locale = 'en'}) {
     final formatter = NumberFormat.decimalPattern(locale);

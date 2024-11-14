@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:standered_application/src/core/utils/extenssion/assets_extension.dart';
-import 'package:standered_application/src/resourses/assets_manager/assets_manager.dart';
 import 'package:standered_application/src/resourses/color_manager/color_provider.dart';
 
 class DefaultButton extends StatelessWidget {

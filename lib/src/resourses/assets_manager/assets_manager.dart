@@ -3,8 +3,6 @@ import 'package:standered_application/src/core/utils/extenssion/assets_extension
 class AppImages {
   static const String _assetsImagesPath = 'assets/images';
   String get assetImagesPath => _assetsImagesPath;
-  static String image = 'path_to_image'.asAssetsImage;
-  static String empyData = 'empty_data.svg'.asAssetsImage;
   static String emptyScreen = 'im_empty_screen.png'.asAssetsImage;
   static String errorScreen = 'im_error_screen.png'.asAssetsImage;
 }
