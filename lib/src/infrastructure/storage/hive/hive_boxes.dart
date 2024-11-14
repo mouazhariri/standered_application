@@ -1,4 +1,4 @@
 abstract class HiveBoxesName {
-  static const userSettingsBox = 'userSettings';
+  static const userLocaleSettingsBox = 'userLocaleSettings';
   static const userInfoBox = 'userInfo';
 }

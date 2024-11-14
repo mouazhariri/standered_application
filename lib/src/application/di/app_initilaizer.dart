@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:standered_application/src/application/di/injection.dart';
+import 'package:standered_application/src/application/router/app_router.dart';
 import 'package:standered_application/src/infrastructure/api/endpoint/base_urls.dart';
 import 'package:standered_application/src/infrastructure/storage/hive/hive_initializer.dart';
 
@@ -13,7 +14,8 @@ abstract class AppInitilaizer {
     WidgetsFlutterBinding.ensureInitialized();
     //-- ENV FILE LOAD  --
     await dotenv.load(fileName: ".env");
-
+    //-- Router init --
+    // AppRouter.init();
     //-- Hive initialize --
     await Hive.initFlutter();
     await HiveInitializer.initialize();
