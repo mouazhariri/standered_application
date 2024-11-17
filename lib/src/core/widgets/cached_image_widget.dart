@@ -29,7 +29,6 @@ class CachedImageWidget extends StatelessWidget {
             height: 1.sh,
             width: 1.sw,
             color: Colors.grey,
-            child: Icon(Icons.person),
           ),
         ),
         errorWidget: (BuildContext context, String url, dynamic error) =>
@@ -39,7 +38,7 @@ class CachedImageWidget extends StatelessWidget {
             width: 1.sw,
             color: Colors.grey,
             child: Icon(
-              Icons.person_3,
+              Icons.error,
               size: 50.sp,
             ),
           ),

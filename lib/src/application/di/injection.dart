@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:standered_application/src/application/di/injection.config.dart';
 import 'package:standered_application/src/infrastructure/network/dio_remote_interceptor.dart';
+import 'package:standered_application/src/infrastructure/storage/locale_storage.dart';
 
 GetIt sl = GetIt.instance;
 
@@ -40,7 +41,7 @@ Dio getDio() {
       maxWidth: 90,
     ),
   );
-  dio.interceptors.add(RemoteInterceptor());
+  dio.interceptors.add(RemoteInterceptor(sl<LocaleStorage>()));
 
   return dio;
 }

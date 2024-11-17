@@ -1,13 +1,17 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:standered_application/src/core/utils/constants/constants.dart';
+import 'package:standered_application/src/core/utils/constants/messages/app_messages.dart';
 import 'package:standered_application/src/core/utils/constants/messages/general_messages.dart';
 import 'package:standered_application/src/infrastructure/api/endpoint/base_urls.dart';
 import 'package:standered_application/src/infrastructure/api/response/api_response.dart';
+import 'package:standered_application/src/infrastructure/storage/locale_storage.dart';
 import 'package:standered_application/src/logger/log_services/dev_logger.dart';
 
 class RemoteInterceptor extends Interceptor {
-  // RemoteInterceptor(this.storageProvider);
-  // final LocaleStorage storageProvider;
+  RemoteInterceptor(this.storageProvider);
+  final LocaleStorage storageProvider;
+
   @override
   void onRequest(
     RequestOptions options,
@@ -24,10 +28,10 @@ class RemoteInterceptor extends Interceptor {
     };
     final customOptions = dioOption;
     customOptions.headers = headers;
-    final token = 'storageProvider.userinformation.accessToken';
+    final token =await storageProvider.getSecuredString(StorageKeys.securedToken);
     // interceptorLog(
     //     'REQUEST STARTED WITH BASE URL : ${customOptions.baseUrl}');
-    // interceptorLog('REQUEST STARTED WITH TOKEN : $token');
+    Dev.logLine('REQUEST STARTED WITH TOKEN : $token');
     // customOptions.headers['Authorization'] = 'Bearer $token';
     customOptions.headers['Authorization'] = 'Bearer $token';
     List<ConnectivityResult> connectivityResult =
@@ -102,7 +106,7 @@ class RemoteInterceptor extends Interceptor {
           message: GeneralMessages().internalServerErrorMessage,
           error: response.data,
         );
-        // AppMessages.showError(message: res.message!);
+        AppMessages.showError(message: res.message!);
         return res;
       default:
         Dev.logLineWithTagError(
@@ -112,11 +116,9 @@ class RemoteInterceptor extends Interceptor {
         );
         return ApiResponse.error(
           error: response.data,
-          //TODO:Add acctual error message
           message: 'Convertting error',
         );
     }
   }
 }
 
-// interceptorLog(String message) => log('[INTERCEPTOR]=> $message');

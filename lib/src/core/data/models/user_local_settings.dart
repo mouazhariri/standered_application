@@ -5,7 +5,7 @@ import 'package:standered_application/src/core/utils/enums/app_theme_types.dart'
 
 import 'package:standered_application/src/infrastructure/storage/hive/hive_type_ids.dart';
 
-part 'user_locale_settings.g.dart';
+part 'user_local_settings.g.dart';
 
 @HiveType(typeId: HiveTypeIds.userLocalSettingsId)
 class UserLocalSettings extends HiveObject implements EquatableMixin {

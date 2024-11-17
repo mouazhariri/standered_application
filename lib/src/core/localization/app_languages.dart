@@ -15,11 +15,12 @@ abstract class AppLanguages {
   static Locale get getCurrentLocale {
     return curreentLocal;
   }
-
+//? For compare alignment
   static bool get isArabic =>
       sl.get<LocaleStorage>().userSettings.locale == AppLocales.arabicLocale;
   static bool get isEnglish =>
       sl.get<LocaleStorage>().userSettings.locale == AppLocales.englishLocale;
+      
   static get createSupportedLocals => const [
         AppLocales.englishLocale, // English
         AppLocales.arabicLocale, // Arabic

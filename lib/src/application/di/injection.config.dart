@@ -13,6 +13,7 @@ import 'package:flutter/material.dart' as _i409;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../infrastructure/storage/locale_storage.dart' as _i718;
 import 'injection.dart' as _i464;
 
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -30,6 +31,7 @@ _i174.GetIt $initGetIt(
   gh.lazySingleton<_i361.Dio>(() => registerModule.dio);
   gh.lazySingleton<_i409.GlobalKey<_i409.NavigatorState>>(
       () => registerModule.navigatorKey);
+  gh.lazySingleton<_i718.LocaleStorage>(() => _i718.LocaleStorage());
   return getIt;
 }
 
