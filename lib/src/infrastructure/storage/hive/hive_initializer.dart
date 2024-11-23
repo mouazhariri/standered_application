@@ -16,7 +16,6 @@ abstract class HiveInitializer {
       var documentsDirectory = await getApplicationDocumentsDirectory();
       Hive.init(documentsDirectory.path);
 
-
       bool isNotRegistered(int typeId) {
         return !Hive.isAdapterRegistered(typeId);
       }
@@ -34,9 +33,10 @@ abstract class HiveInitializer {
       }
 
       //? Open Boxes
-      await Hive.openBox<UserLocalSettings>(HiveBoxesName.userLocaleSettingsBox);
+      await Hive.openBox<UserLocalSettings>(
+          HiveBoxesName.userLocaleSettingsBox);
       await Hive.openBox<UserInformation>(HiveBoxesName.userInfoBox);
-    
+
       Dev.logSuccess('FINISH HiveInitializer');
     } catch (e) {
       Dev.logError('HiveInitializer Error $e');

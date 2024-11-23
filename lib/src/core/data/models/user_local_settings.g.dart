@@ -19,7 +19,7 @@ class UserLocalSettingsAdapter extends TypeAdapter<UserLocalSettings> {
     return UserLocalSettings(
       isFirstTimeOpenApp: fields[0] == null ? true : fields[0] as bool,
       theme: fields[1] as AppThemeType,
-      locale: fields[2] as Locale,
+      locale: fields[2] as String,
     );
   }
 

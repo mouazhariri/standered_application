@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:standered_application/features/home/presentation/pages/home_page.dart';
+import 'package:standered_application/features/sign_in/presentation/pages/sign_in_screen.dart';
 import 'package:standered_application/src/application/router/app_routes.dart';
 import 'package:standered_application/src/application/router/custom_navigation_observer.dart';
 import 'package:standered_application/src/application/router/fallback_screen.dart';
@@ -56,6 +57,13 @@ class AppRouter {
       routes: <RouteBase>[
         GoRoute(
           path: AppRoutes.initScreen,
+          parentNavigatorKey: rootKey,
+          builder: (BuildContext context, GoRouterState state) {
+            return SignInScreen();
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.homeScreen,
           parentNavigatorKey: rootKey,
           builder: (BuildContext context, GoRouterState state) {
             return HomePage();

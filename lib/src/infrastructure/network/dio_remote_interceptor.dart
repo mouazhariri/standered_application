@@ -5,12 +5,12 @@ import 'package:standered_application/src/core/utils/constants/messages/app_mess
 import 'package:standered_application/src/core/utils/constants/messages/general_messages.dart';
 import 'package:standered_application/src/infrastructure/api/endpoint/base_urls.dart';
 import 'package:standered_application/src/infrastructure/api/response/api_response.dart';
-import 'package:standered_application/src/infrastructure/storage/locale_storage.dart';
+import 'package:standered_application/src/infrastructure/storage/local_storage.dart';
 import 'package:standered_application/src/logger/log_services/dev_logger.dart';
 
 class RemoteInterceptor extends Interceptor {
   RemoteInterceptor(this.storageProvider);
-  final LocaleStorage storageProvider;
+  final LocalStorage storageProvider;
 
   @override
   void onRequest(
@@ -28,7 +28,8 @@ class RemoteInterceptor extends Interceptor {
     };
     final customOptions = dioOption;
     customOptions.headers = headers;
-    final token =await storageProvider.getSecuredString(StorageKeys.securedToken);
+    final token =
+        await storageProvider.getSecuredString(StorageKeys.securedToken);
     // interceptorLog(
     //     'REQUEST STARTED WITH BASE URL : ${customOptions.baseUrl}');
     Dev.logLine('REQUEST STARTED WITH TOKEN : $token');
@@ -121,4 +122,3 @@ class RemoteInterceptor extends Interceptor {
     }
   }
 }
-

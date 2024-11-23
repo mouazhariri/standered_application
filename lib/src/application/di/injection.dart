@@ -4,8 +4,9 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:standered_application/src/application/di/injection.config.dart';
+import 'package:standered_application/src/infrastructure/api/endpoint/base_urls.dart';
 import 'package:standered_application/src/infrastructure/network/dio_remote_interceptor.dart';
-import 'package:standered_application/src/infrastructure/storage/locale_storage.dart';
+import 'package:standered_application/src/infrastructure/storage/local_storage.dart';
 
 GetIt sl = GetIt.instance;
 
@@ -13,6 +14,8 @@ GetIt sl = GetIt.instance;
 abstract class RegisterModule {
   @LazySingleton()
   Dio get dio => getDio();
+  @Named('baseUrl')
+  String get baseUrl => BaseUrls.baseUrl;
 
   @lazySingleton
   GlobalKey<NavigatorState> get navigatorKey => GlobalKey<NavigatorState>();
@@ -41,7 +44,7 @@ Dio getDio() {
       maxWidth: 90,
     ),
   );
-  dio.interceptors.add(RemoteInterceptor(sl<LocaleStorage>()));
+  dio.interceptors.add(RemoteInterceptor(sl<LocalStorage>()));
 
   return dio;
 }

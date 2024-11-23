@@ -19,21 +19,23 @@ class UserInformation extends HiveObject implements EquatableMixin {
   @HiveField(1)
   @JsonKey(name: "id")
   final int id;
-  @HiveField(3)
-  @JsonKey(name: "full_name")
+  @HiveField(2)
+  @JsonKey(name: "name")
   final String? name;
 
-  @HiveField(7)
-  @JsonKey(name: "location")
-  final String location;
-  @HiveField(8)
+  @HiveField(3)
   @JsonKey(name: "phone")
   final String phoneNumber;
-  @HiveField(9)
-  @JsonKey(name: "fcm_token")
-  final String fcmToken;
+  // @HiveField(9)
+  // @JsonKey(name: "fcm_token")
+  // final String fcmToken;
 
-  @HiveField(10)
+  // Exclude token from Hive serialization, only use for runtime or API
+  // @HiveField(5)
+  @JsonKey(name: "token")
+  final String token;
+
+  @HiveField(4)
   @JsonKey(name: "image")
   final String? image;
 
@@ -41,22 +43,21 @@ class UserInformation extends HiveObject implements EquatableMixin {
     required this.id,
     required this.name,
     required this.phoneNumber,
-    required this.location,
-    required this.fcmToken,
+    // required this.fcmToken,
     required this.image,
+    this.token = '',
   });
 
   factory UserInformation.fromJson(Map<String, dynamic> json) =>
       _$UserInformationFromJson(json);
-
   Map<String, dynamic> toJson() => _$UserInformationToJson(this);
   static UserInformation defaultValue = UserInformation(
     id: -1,
     name: '',
-    location: '',
     phoneNumber: "",
-    fcmToken: "",
+    // fcmToken: "",
     image: null,
+    token: '',
   );
   @override
   bool operator ==(covariant UserInformation other) {
@@ -64,9 +65,9 @@ class UserInformation extends HiveObject implements EquatableMixin {
 
     return other.id == id &&
         other.name == name &&
-        other.location == location &&
         other.phoneNumber == phoneNumber &&
-        other.fcmToken == fcmToken &&
+        other.token == token &&
+        // other.fcmToken == fcmToken &&
         other.image == image;
   }
 
@@ -75,19 +76,19 @@ class UserInformation extends HiveObject implements EquatableMixin {
     return id.hashCode ^
         name.hashCode ^
         phoneNumber.hashCode ^
-        location.hashCode ^
-        fcmToken.hashCode ^
+        token.hashCode ^
+        // fcmToken.hashCode ^
         image.hashCode;
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         id,
         name,
-        location,
+
         phoneNumber,
-        fcmToken,
+        token,
+        // fcmToken,
         image,
       ];
 
@@ -97,17 +98,17 @@ class UserInformation extends HiveObject implements EquatableMixin {
   UserInformation copyWith({
     int? id,
     String? name,
-    String? location,
     String? phoneNumber,
-    String? fcmToken,
+    String? token,
+    // String? fcmToken,
     String? image,
   }) {
     return UserInformation(
       id: id ?? this.id,
       name: name ?? this.name,
-      location: location ?? this.location,
       phoneNumber: phoneNumber ?? this.phoneNumber,
-      fcmToken: fcmToken ?? this.fcmToken,
+      token: token ?? this.token,
+      // fcmToken: fcmToken ?? this.fcmToken,
       image: image ?? this.image,
     );
   }

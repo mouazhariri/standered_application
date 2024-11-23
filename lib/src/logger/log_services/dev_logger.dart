@@ -32,7 +32,7 @@ class Dev {
     if (!_isLoggerEnable) return;
     debugPrint(
       Colorize("******  $value  ******")
-          .bgGreen()
+          .bgBlue()
           .black()
           .bold()
           .italic()
@@ -44,7 +44,7 @@ class Dev {
     if (!_isLoggerEnable) return;
     debugPrint(
       Colorize("--------   Success with : $value   --------")
-          .bgGreen()
+          .bgCyan()
           .black()
           .bold()
           .italic()

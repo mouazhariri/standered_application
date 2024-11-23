@@ -14,7 +14,7 @@ class UserLocalSettings extends HiveObject implements EquatableMixin {
   @HiveField(1)
   AppThemeType theme;
   @HiveField(2)
-  Locale locale;
+  final String locale;
 
   UserLocalSettings({
     required this.isFirstTimeOpenApp,
@@ -25,7 +25,7 @@ class UserLocalSettings extends HiveObject implements EquatableMixin {
   UserLocalSettings copyWith({
     bool? isFirstTimeOpenApp,
     AppThemeType? theme,
-    Locale? locale,
+    String? locale,
   }) {
     return UserLocalSettings(
       isFirstTimeOpenApp: isFirstTimeOpenApp ?? this.isFirstTimeOpenApp,
@@ -43,7 +43,7 @@ class UserLocalSettings extends HiveObject implements EquatableMixin {
   static UserLocalSettings defaultSettings = UserLocalSettings(
     isFirstTimeOpenApp: false,
     theme: AppThemeType.light,
-    locale: const Locale('en'),
+    locale: 'en',
   );
 
   @override

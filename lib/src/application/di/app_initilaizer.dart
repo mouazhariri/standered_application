@@ -7,6 +7,7 @@ import 'package:standered_application/src/application/di/injection.dart';
 import 'package:standered_application/src/application/router/app_router.dart';
 import 'package:standered_application/src/infrastructure/api/endpoint/base_urls.dart';
 import 'package:standered_application/src/infrastructure/storage/hive/hive_initializer.dart';
+import 'package:standered_application/src/infrastructure/storage/local_storage.dart';
 
 abstract class AppInitilaizer {
   static init() async {
@@ -21,6 +22,8 @@ abstract class AppInitilaizer {
     await HiveInitializer.initialize();
     //-- Dependency inijection  --
     configurationDependencies();
+    await sl<LocalStorage>().init();
+
     //-- Localization init  --
     await EasyLocalization.ensureInitialized();
     //-- Load base URL's  --

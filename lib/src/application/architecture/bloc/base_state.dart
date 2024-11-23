@@ -1,8 +1,8 @@
 mixin BaseState {
-  String get message;
+  late final String message;
 
-  bool get error;
+  late final bool error;
 
-  bool get isLoading;
-  bool get success;
+  late final bool isLoading;
+  late final bool success;
 }
